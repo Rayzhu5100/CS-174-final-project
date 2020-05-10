@@ -26,7 +26,7 @@ h1{
     flex-direction: column;
     align-items: center;
     color: #57606f;
-    border-radius: 5px;
+    border-radius: 50px;
     -webkit-box-shadow: 6px 5px 18px 8px rgba(150,139,150,0.75);
     -moz-box-shadow: 6px 5px 18px 8px rgba(150,139,150,0.75);
     box-shadow: 6px 5px 18px 8px rgba(150,139,150,0.75);
