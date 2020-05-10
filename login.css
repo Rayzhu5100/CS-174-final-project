@@ -1,0 +1,68 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #22c1c3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #fdbb2d, #22c1c3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #fdbb2d, #22c1c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1{
+    color: #ffffff;
+    font-weight: 100;
+}
+
+#container-form{
+    background-color: #ffffff;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #57606f;
+    border-radius: 5px;
+    -webkit-box-shadow: 6px 5px 18px 8px rgba(150,139,150,0.75);
+    -moz-box-shadow: 6px 5px 18px 8px rgba(150,139,150,0.75);
+    box-shadow: 6px 5px 18px 8px rgba(150,139,150,0.75);
+}
+
+hr{
+    width: 70%;    
+    border: 0.5px solid #ced6e0;
+}
+
+h3{
+    font-size: 2em;    
+    margin: 10px 0 0 0;
+}
+input[type=text],
+input[type=password]{  
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #f0f0f0;
+  padding: 8px;
+  font-size: 16px;
+}
+
+button{
+    color: #57606f;
+    font-size: 1em;
+    border: 1px solid #f0f0f0;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    display: block;
+    margin: 0px auto 10px auto;
+}
+
+button:hover{
+    color:#1e90ff;
+    cursor: pointer;
+}
