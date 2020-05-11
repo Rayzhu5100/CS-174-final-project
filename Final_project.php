@@ -43,7 +43,7 @@ if(isset($_POST['register'])) {
     $stmt = $conn->prepare("INSERT INTO User VALUES (?,?,?,?)");
     $stmt->bind_param('ssss',$USERNAME,$EMAIL,$PASSWORD,$SALT);
     $stmt->execute();
-    $result->close();
+    $result->close();//ss
     $stmt->close();
   }
 }
@@ -68,6 +68,8 @@ if(isset($_POST['login'])) {
 
     if($sql->num_rows == 1) {
       $login_status = 1;
+    }else{
+      echo " Username and password doesn't match!"
     }
   }
 }
