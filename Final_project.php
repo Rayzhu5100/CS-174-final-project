@@ -25,7 +25,7 @@ if(isset($_POST['register'])) {
   //check username is unique
   $sql = $conn->query("SELECT * FROM User WHERE username='$USERNAME'");
   if($sql->num_rows > 0) {
-    echo "Email already exists!"
+    echo "Email already exists!";
   //check password and repassword match or not
   }else if($password != $rePassword){
     echo "Password doesn't match, please check you input!";
