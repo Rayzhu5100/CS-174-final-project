@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'loginpas.php';
 
 
@@ -29,11 +30,11 @@ function createFormDoc(){
                         <hr>
                         <form method='post' action='login.php'>
                             <p>Username</p>
-                            <input type="text" name="username">
+                            <input required type="text" name="username">
                             <p>Password</p>
-                            <input type="password" name="password">
+                            <input required type="password" name="password">
                             <p><a href="#">Forget password???</a></p>
-                            <button type ="submit" name ="Login">Login</button>
+                            <button onclick="document.location = 'post.php'" name ="Login">Login</button>
                         </form>
         _END;
     }
@@ -45,6 +46,8 @@ function createFormDoc(){
    $formDoc = createFormDoc();
    //login
    if(isset($_POST['Login'])) {
+
+
      $username = sanitizeMySQL($conn,sanitizeString($_POST['username']));
      //use username find salt, if no result, the username doesn't exist
      $salt = "SELECT Salt FROM User WHERE Username='".$username."'";
@@ -59,7 +62,10 @@ function createFormDoc(){
          if(mysqli_num_rows($result) > 0){
            echo "login successful!<br>";
            while($row = mysqli_fetch_array($result)){
-           echo $row['Id'];
+           $id = $row['Id'];
+           $_SESSION['id'] = $id;
+
+
           }
         }else{
           echo "Username and password doesn't match!";
@@ -79,45 +85,7 @@ function createFormDoc(){
 
 
  main();
-//create account
-// if(isset($_POST['register'])) {
-//   $username = sanitizeString($_POST['username']);
-//   $email = sanitizeString($_POST['email']);
-//   $password = sanitizeString($_POST['password']);
-//   $rePassword = sanitizeString($_POST['repassword']);
-//
-//   $USERNAME = sanitizeMySQL($conn,$username);
-//   //check username is unique
-//   $sql = $conn->query("SELECT * FROM User WHERE username='$USERNAME'");
-//   if($sql->num_rows > 0) {
-//     echo "Email already exists!"
-//   //check password and repassword match or not
-//   }else if($password != $rePassword){
-//     echo "Password doesn't match, please check you input!";
-//   }else{
-//     $salt_length = 8;
-//     //generate a random salt value
-//     $salt = mcrypt_create_iv($salt_length, MCRYPT_DEV_URANDOM);
-//     $hashed_password = hash('sha256',$salt.sanitizeString($_POST['password']));
-//
-//     $USERNAME = sanitizeMySQL($conn,$username);
-//     $EMAIL = sanitizeMySQL($conn,$email);
-//     $PASSWORD = sanitizeMySQL($conn,$hashed_password);
-//     $SALT = sanitizeMySQL($conn,$salt);
-//     //insert user data to databse
-//     $stmt = $conn->prepare("INSERT INTO User VALUES (?,?,?,?)");
-//     $stmt->bind_param('ssss',$USERNAME,$EMAIL,$PASSWORD,$SALT);
-//     $stmt->execute();
-//     $result->close();//ss
-//     $stmt->close();
-//   }
-// }
-//
-//
-//
-// if(isLogin($login_status) == true){
-//   // more to add
-// }
+
 
 
 
@@ -132,9 +100,4 @@ function sanitizeMySQL($connection, $var) {
   $var = $connection->real_escape_string($var);
   $var = sanitizeString($var);
   return $var;
-}
-
-function isLogin($n){
-  if($n == 1) return true;
-  else return false;
 }

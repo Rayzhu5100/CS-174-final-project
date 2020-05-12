@@ -22,11 +22,11 @@ function createFormDoc(){
                         <hr>
                         <form method='post' action='signup.php'>
                             <p>Username</p>
-                            <input type="text" name="username">
+                            <input required type="text" name="username">
                             <p>Password</p>
-                            <input type="password" name="password">
+                            <input required type="password" name="password">
                             <p>Confirm Password</p>
-                            <input type="password" name="repassword">
+                            <input required type="password" name="repassword">
                             <p><a href="login.php">Sign In</a></p>
                             <button type ="submit" name ="register">Sign Up<button/>
                         </form>

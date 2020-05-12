@@ -3,15 +3,11 @@
   <input type='file' name='file' />
   <input type='submit' value='Save' name='upload'>
 </form>
-<form method="get" action="post.php">
-    <input type="text" name="id" value="">
-    <input type="submit">
-</form>
-
 <?php
+session_start();
 require_once 'loginpas.php';
-echo $_POST['username'];
-
+$id = $_SESSION['id'];
+echo $id;
 if(isset($_POST['upload'])){
 
   global $hn, $un, $pw, $db;
@@ -39,9 +35,6 @@ if(isset($_POST['upload'])){
     $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
 
     echo "base64 code is: ".$image;
-
-    session_start();
-    $id = $_SESSION['id'];
 
     $Image = sanitizeMySQL($conn,$image);
     $image_text = sanitizeMySQL($conn,sanitizeString($_POST['text']));
