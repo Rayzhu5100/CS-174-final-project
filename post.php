@@ -1,20 +1,51 @@
-<form method="post" action="" enctype='multipart/form-data'>
-  <input type="text" name="text">
-  <input type='file' name='file' />
-  <input type='submit' value='Save' name='upload'>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Add Posts</title>
+</head>
+<body>
+    <div id="main-container">
+        <h1>Add a new post</h1>
+        <div id="container">
+            <div id="container-post">
+                <form method="post" action="post.php" enctype="multipart/form-data">
+                    <p>Description</p>
+                    <textarea name="description"></textarea>
+                    <p>Image</p>
+                    <input type="file" name="file">
+                    <div id="buttons">
+                        <button name ="upload">Add a post</button>
+                        <button>Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
 <?php
 session_start();
 require_once 'loginpas.php';
 $id = $_SESSION['id'];
 echo $id;
 if(isset($_POST['upload'])){
-
+  echo "hello";
   global $hn, $un, $pw, $db;
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error)die("Connection failed!");
 
-  $name = $_FILES['file']['name'];
+  $name = $_FILES['file']['name']; // is it title?
   $target_dir = "upload/";
   $target_file = $target_dir . basename($_FILES["file"]["name"]);
 
@@ -37,14 +68,12 @@ if(isset($_POST['upload'])){
     echo "base64 code is: ".$image;
 
     $Image = sanitizeMySQL($conn,$image);
-    $image_text = sanitizeMySQL($conn,sanitizeString($_POST['text']));
+    $image_text = sanitizeMySQL($conn,sanitizeString($_POST['description']));
     $ID = sanitizeMySQL($conn,$id);
 
     $stmt = $conn->prepare("INSERT INTO Post(text,image,author_id) VALUES (?,?,?)");
     $stmt->bind_param('sss',$image_text,$Image,$ID);
     $stmt->execute();
-
-    $stmt->close();
   }else echo "Wrong image type!";
 }
 

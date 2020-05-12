@@ -33,7 +33,7 @@ function createFormDoc(){
                             <input required type="text" name="username">
                             <p>Password</p>
                             <input required type="password" name="password">
-                            <p><a href="#">Forget password???</a></p>
+                            <p><a href="post.php">Forget password???</a></p>
                             <button onclick="document.location = 'post.php'" name ="Login">Login</button>
                         </form>
         _END;
@@ -63,8 +63,11 @@ function createFormDoc(){
            echo "login successful!<br>";
            while($row = mysqli_fetch_array($result)){
            $id = $row['Id'];
+           echo $id;
            $_SESSION['id'] = $id;
-
+           // this one successfully rightyes
+           header('Location: post.php'); 
+           exit;
 
           }
         }else{
