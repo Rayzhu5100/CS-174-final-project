@@ -142,3 +142,29 @@ a{
     color: #ffff;
 
 }
+
+/************** PAGE *****************/
+
+#page-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+
+.page-post-item{
+    border: 1px solid #ced6e0;
+    width: 800px;
+    overflow: hidden;
+    color:#2f3640;
+}
+
+.page-post-item img{
+    width: 100%;
+    height: 400px;
+}
+
+.page-post-item p{
+    padding: 5px 15px 5px 15px;
+    line-height: 1.8em;
+}
