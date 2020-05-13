@@ -18,11 +18,16 @@ function createFormDoc(){
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="login.css">
+            <link rel="stylesheet" href="style.css">
             <title>Sign Up</title>
         </head>
         <body>
             <div id="main-container">
+            <div class="top-menu">
+                <span class="menu-items"><a href="homepage.php">Home</a></span>
+                <span class="menu-items"><a href="login.php">Login</a></span>
+                <span class="menu-items"><a href="signup.php">Sign Up</a></span>
+            </div>
                 <h1>Welcome to our page</h1>
                 <div id="container">
                     <div id="container-form">
@@ -66,7 +71,7 @@ function createFormDoc(){
            echo $id;
            $_SESSION['id'] = $id;
            // this one successfully rightyes
-           header('Location: post.php'); 
+           header('Location: post.php');
            exit;
 
           }

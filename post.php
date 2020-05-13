@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="style.css">
     <title>Add Posts</title>
 </head>
 <body>
     <div id="main-container">
+      <div id="main-container">
+        <div class="top-menu">
+            <span class="menu-items"><a href="homepage.php">Home</a></span>
+            <span class="menu-items"><a href="login.php">Login</a></span>
+            <span class="menu-items"><a href="signup.php">Sign Up</a></span>
+        </div>
         <h1>Add a new post</h1>
         <div id="container">
             <div id="container-post">
                 <form method="post" action="post.php" enctype="multipart/form-data">
+                  <p>Title</p>
+                  <input type="text" name="title">
                     <p>Description</p>
                     <textarea name="description"></textarea>
                     <p>Image</p>
@@ -68,11 +76,12 @@ if(isset($_POST['upload'])){
     echo "base64 code is: ".$image;
 
     $Image = sanitizeMySQL($conn,$image);
+    $image_title = sanitizeMySQL($conn,sanitizeString($_POST['title']));
     $image_text = sanitizeMySQL($conn,sanitizeString($_POST['description']));
     $ID = sanitizeMySQL($conn,$id);
 
-    $stmt = $conn->prepare("INSERT INTO Post(text,image,author_id) VALUES (?,?,?)");
-    $stmt->bind_param('sss',$image_text,$Image,$ID);
+    $stmt = $conn->prepare("INSERT INTO Post(title,text,image,author_id) VALUES (?,?,?,?)");
+    $stmt->bind_param('ssss',$image_title,$image_text,$Image,$ID);
     $stmt->execute();
   }else echo "Wrong image type!";
 }
