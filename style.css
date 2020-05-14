@@ -5,7 +5,6 @@ body{
     background: #22c1c3;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #fdbb2d, #22c1c3);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #fdbb2d, #22c1c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    /* width: 1000px; */
 }
 
 #main-container{
@@ -19,12 +18,18 @@ body{
 h1{
     color: #ffffff;
     font-weight: 100;
+    margin-bottom: 10px;
+}
+
+.error{
+    color:#e55039;
+    padding-bottom: 10px;
 }
 
 #container-form, #container-post{
-    background-color: #ffffff;    
+    background-color: #ffffff;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     color: #57606f;
     border-radius: 15px;
     -webkit-box-shadow: 6px 5px 18px 8px rgba(150,139,150,0.75);
@@ -43,16 +48,16 @@ h1{
 }
 
 hr{
-    width: 70%;    
+    width: 70%;
     border: 0.5px solid #ced6e0;
 }
 
 h3{
-    font-size: 20px;    
+    font-size: 20px;
 }
 input[type=text],
-input[type=password], textarea{  
-  width: 100%;
+input[type=password], textarea{
+   width: 250px;
   border: none;
   outline: none;
   border-radius: 5px;
@@ -62,15 +67,16 @@ input[type=password], textarea{
 
 textarea{
     height: 200px;
+
 }
 
 input[type=text],
 input[type=password]{
-    height: 30px;    
+    height: 30px;
 }
 
 #buttons{
-    text-align: center;    
+    text-align: center;
 }
 
 #buttons button{
@@ -96,7 +102,7 @@ button:hover, a:hover{
 }
 
 a{
-    /* text-decoration: none; */
+    text-decoration: none;
     color: #57606f;
 }
 
@@ -134,13 +140,15 @@ a{
 
 .item img{
     height: 200px;
-    
+
 }
 
 .item .desc{
     text-align: center;
-    color: #ffff;
+}
 
+.item a{
+    text-decoration: none;
 }
 
 /************** PAGE *****************/
@@ -149,7 +157,7 @@ a{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
 }
 
 .page-post-item{
