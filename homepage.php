@@ -34,6 +34,7 @@ function htmlMenu()
     ';
   } else {
     $htmlContent .= '
+    <span class="menu-items"><a href="addpost.php">New Post</a></span>     
     <span class="menu-items"><a href="logout.php">Logout</a></span>';
   }
   $htmlContent .= '

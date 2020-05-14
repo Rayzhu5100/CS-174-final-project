@@ -39,25 +39,19 @@ function htmlHeader()
                       <input type="file" name="file">
                       <div id="buttons">
                         <button name="upload">Add a post</button>
-                        <button>Cancel</button>
+                        
+                        <a class='cancel' href = 'homepage.php'>Cancel</a>
                       </div>
                     </form>
       
         _END;
 }
 
-
-function htmlForm(){
-  
-}
-
-
 function main()
 {
   $formDoc = htmlHeader();
   echo $formDoc;
   $id = $_SESSION['id'];
-  echo "ID: " . $id;
   $htmlContent = "";
   if (isset($_POST['upload'])) {
     global $hn, $un, $pw, $db;
